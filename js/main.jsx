@@ -12,11 +12,7 @@ function Filter(filters) {
 
 Filter.prototype = {
   applyOn: function(todos) {
-    var criteria = this._filters[this._current].criteria;
-    if (criteria) {
-      return todos.filter(criteria);
-    }
-    return todos;
+    return this._filters[this._current].criteria?todos.filter(this._filters[this._current].criteria):todos;
   },
 
   getViewValues: function() {
@@ -137,25 +133,11 @@ app.TodoItem = React.createClass({
         editing: this.props.editing
       })}>
         <div className="view">
-          <input
-            className="toggle"
-            type="checkbox"
-            checked={this.props.todo.completed}
-            onChange={this.props.onToggle}
-          />
-          <label onDoubleClick={this.dblclk}>
-            {this.props.todo.title}
-          </label>
+          <input className="toggle" type="checkbox" checked={this.props.todo.completed} onChange={this.props.onToggle}/>
+          <label onDoubleClick={this.dblclk}>{this.props.todo.title}</label>
           <button className="destroy" onClick={this.props.onDestroy} />
         </div>
-        <input
-          ref="editField"
-          className="edit"
-          value={this.state.editText}
-          onBlur={this.sbmt}
-          onChange={this.handleChange}
-          onKeyDown={this.doun}
-        />
+        <input ref="editField" className="edit" value={this.state.editText} onBlur={this.sbmt} onChange={this.handleChange} onKeyDown={this.doun} />
       </li>
     );
   }
@@ -189,28 +171,28 @@ app.TodoItems = React.createClass({
     this.setState({editing: null});
   },
 
-  _renderItem: function(todo) {
-    var model = this.props.model;
-    return (
-      <app.TodoItem
-        key={todo.id}
-        todo={todo}
-        onToggle={model.toggle.bind(model, todo)}
-        onDestroy={model.destroy.bind(model, todo)}
-        onEdit={this.edit.bind(this, todo)}
-        editing={this.state.editing === todo.id}
-        onSave={this.save.bind(this, todo)}
-        onCancel={this.cancel}
-      />
-    );
-  },
-
   render: function () {
+    var model = this.props.model;
     var todos = this.props.todos;
+    var self = this;
+    function _renderItem(todo) {
+      return (
+        <app.TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={model.toggle.bind(model, todo)}
+          onDestroy={model.destroy.bind(model, todo)}
+          onEdit={self.edit.bind(self, todo)}
+          editing={self.state.editing === todo.id}
+          onSave={self.save.bind(self, todo)}
+          onCancel={self.cancel}
+        />
+      );
+    }
     return (
       <section id="main">
         <input id="toggle-all" type="checkbox" onChange={this.toggleAll} checked={this.props.checked}/>
-        <ul id="todo-list">{todos.map(this._renderItem, this)}</ul>
+        <ul id="todo-list">{todos.map(_renderItem)}</ul>
       </section>
     );
   }
@@ -222,15 +204,6 @@ var filterData = [
   {url: '/completed', linkText: 'Completed', criteria: function(todo) { return todo.completed }}
 ];
 var filter = new Filter(filterData);
-
-function startRouter() {
-  var routerData = {};
-  filterData.forEach(function(f, idx) {
-    routerData[f.url] = updateViewFilteredBy.bind(null, idx);
-  });
-  var router = new Router(routerData);
-  router.init(filterData[0].url);
-}
 
 function updateViewFilteredBy(index) {
   filter._current = index;
@@ -321,4 +294,9 @@ todoApp = React.render(
   />,
   document.getElementById('todoapp')
 );
-startRouter();
+var routerData = {};
+filterData.forEach(function(f, idx) {
+  routerData[f.url] = updateViewFilteredBy.bind(null, idx);
+});
+var router = new Router(routerData);
+router.init(filterData[0].url); 
