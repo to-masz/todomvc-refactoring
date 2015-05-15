@@ -1,0 +1,19 @@
+{
+  "name": "todomvc-refactoring",
+  "version": "1.0.0",
+  "description": "Refactorig Workshop IPC 2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wolframkriesing/todomvc-refactoring"
+  },
+  "author": "@wolframkriesing, @mruprecht",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wolframkriesing/todomvc-refactoring/issues"
+  },
+  "homepage": "https://github.com/wolframkriesing/todomvc-refactoring"
+}
