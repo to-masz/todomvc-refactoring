@@ -4,7 +4,7 @@
   "description": "Refactorig Workshop IPC 2015",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wolframkriesing/todomvc-refactoring/issues"
   },
-  "homepage": "https://github.com/wolframkriesing/todomvc-refactoring"
+  "homepage": "https://github.com/wolframkriesing/todomvc-refactoring",
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
 }
