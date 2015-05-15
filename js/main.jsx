@@ -1,3 +1,4 @@
+/* global React */
 var app = {};
 function more() {
   var newObj = {};
