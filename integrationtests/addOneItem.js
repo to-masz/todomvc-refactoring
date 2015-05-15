@@ -16,6 +16,9 @@ describe('add one item', function () {
   it('renders correctly', function (done) {
       browser.get(url)
           .then(function () {
+              return browser.executeScript('localStorage.clear();');
+          })
+          .then(function () {
               return browser.findElement(kommando.webdriver.By.id('new-todo')).click();
           })
           .then(function () {

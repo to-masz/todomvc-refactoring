@@ -18,7 +18,11 @@ describe('filter all completed items', function () {
 
   it('shows only the completed item', function(done) {
     // add 2 items
-    browser.get(url)
+    browser
+      .get(url)
+      .then(function () {
+          return browser.executeScript('localStorage.clear();');
+      })
       .then(function () {
           return browser.findElement(kommando.webdriver.By.id('new-todo')).click();
       })
