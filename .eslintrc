@@ -6,7 +6,13 @@
   },
   "rules": {
     "semi": 2,
-    "no-underscore-dangle": 0
+    "quotes": [
+      2,
+      "single"
+    ],
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
+    "global-strict": 0
   },
   "env" : {
     "browser": true,
