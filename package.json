@@ -4,7 +4,8 @@
   "description": "Refactorig Workshop IPC 2015",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint js --ext .jsx"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/wolframkriesing/todomvc-refactoring",
   "devDependencies": {
+    "eslint": "^0.21.0",
     "mocha": "^2.2.5"
   }
 }
