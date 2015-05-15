@@ -1,7 +1,8 @@
 'use strict';
 /* global kommando  require __dirname */
 
-var assert = require('assert');
+var assertTrimmedString = require('./assertTrimmedString');
+
 var path = require('path');
 var fs = require('fs');
 
@@ -19,9 +20,10 @@ describe('the basic site', function () {
                 .then(function (html) {
                     // fs.writeFileSync(path.join(__dirname, 'golden-master.html'), html);
                     var expected = fs.readFileSync(path.join(__dirname, 'golden-master.html'), 'utf8');
-                    assert.equal(html, expected);
+                    assertTrimmedString(html, expected);
                 })
                 .then(done, done);
         });
     });
 });
+
