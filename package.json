@@ -19,6 +19,7 @@
   "homepage": "https://github.com/wolframkriesing/todomvc-refactoring",
   "devDependencies": {
     "eslint": "^0.21.0",
+    "kommando": "^1.0.0",
     "mocha": "^2.2.5"
   }
 }
