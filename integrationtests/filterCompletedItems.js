@@ -1,6 +1,7 @@
 'use strict';
 /* global kommando  require __dirname */
 
+var assert = require('assert');
 var assertTrimmedString = require('./assertTrimmedString');
 
 var path = require('path');
@@ -61,8 +62,49 @@ describe('filter all completed items', function () {
       .then(done, done);
   });
 
-  //it('updates the URL', function() {
-  //  
-  //});
+  it('updates the URL', function(done) {
+    // add 2 items
+    browser.get(url)
+      .then(function () {
+          return browser.executeScript('localStorage.clear();');
+      })
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.id('new-todo')).click();
+      })
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.id('new-todo')).sendKeys('hallo');
+      })
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.id('new-todo')).sendKeys(kommando.webdriver.Key.ENTER);
+      })
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.id('new-todo')).click();
+      })
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.id('new-todo')).sendKeys('hallo 1');
+      })
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.id('new-todo')).sendKeys(kommando.webdriver.Key.ENTER);
+      })
+      // set first item to completed
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.css('#todo-list li input[type=checkbox]')).click();
+      })
+      // click the completed filter button
+      .then(function () {
+          return browser.findElement(kommando.webdriver.By.linkText('Completed')).click();
+      })
+      .then(function () {
+          return browser.getCurrentUrl();
+      })
+      .then(function (currentUrl) {
+          assert.equal(currentUrl, url + '#/completed');
+      })
+      .then(done, done);
+  });
   
 });
+
+
+// todo: 
+// - make a nice (a)sync API that we can replace by unit tests later
