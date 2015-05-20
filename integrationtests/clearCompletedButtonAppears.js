@@ -2,7 +2,6 @@
 /* global kommando  require __dirname */
 
 var assertTrimmedString = require('./assertTrimmedString');
-var assert = require('assert');
 
 var path = require('path');
 var fs = require('fs');
