@@ -34,6 +34,9 @@ describe('add one item', function () {
               var expected = fs.readFileSync(path.join(__dirname, 'golden-master-addOneItem.html'), 'utf8');
               assertTrimmedString(html.replace(reactAttrs, ''), expected);
           })
+          .then(function () {
+              return browser.executeScript('localStorage.clear();');
+          })
           .then(done, done);
   });
 

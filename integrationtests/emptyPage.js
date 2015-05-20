@@ -22,6 +22,9 @@ describe('the basic site', function () {
                     var expected = fs.readFileSync(path.join(__dirname, 'golden-master.html'), 'utf8');
                     assertTrimmedString(html, expected);
                 })
+                .then(function () {
+                    return browser.executeScript('localStorage.clear();');
+                })
                 .then(done, done);
         });
     });
