@@ -26,18 +26,22 @@ function getDiffMessage(s1, s2) {
         + '\n' + (new Array(prefixLength)).join('=') + '^';
 }
 
-function getTrimmedLines(s) {
+function trimLines(s) {
     return s.split('\n').map(trim);
 }
 
+function removeEmptyAttributes(s) {
+  return s.replace(/\s\w+=""/g, '');
+}
+
 function assertTrimmedString(s1, s2) {
-    var trimmedS1 = trim(s1);
-    var trimmedS2 = trim(s2);
+    var cleanedS1 = removeEmptyAttributes(trim(s1));
+    var cleanedS2 = removeEmptyAttributes(trim(s2));
     var message = '=';
-    if (trimmedS1 !== trimmedS2) {
-        message = getDiffMessage(trimmedS1, trimmedS2);
+    if (cleanedS1 !== cleanedS2) {
+        message = getDiffMessage(cleanedS1, cleanedS2);
     }
-    return assert.deepEqual(getTrimmedLines(trimmedS1), getTrimmedLines(trimmedS2), message);
+    return assert.deepEqual(trimLines(cleanedS1), trimLines(cleanedS2), message);
 }
 
 module.exports = assertTrimmedString;
