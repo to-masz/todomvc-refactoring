@@ -14,9 +14,6 @@ browser.manage().window().setSize(800, 600);
 
 describe('filter all completed items', function () {
 
-  beforeEach(function() {
-  });
-
   it('shows only the completed item', function(done) {
     // add 2 items
     browser
@@ -102,9 +99,9 @@ describe('filter all completed items', function () {
       })
       .then(done, done);
   });
-  
+
 });
 
 
-// todo: 
+// todo:
 // - make a nice (a)sync API that we can replace by unit tests later

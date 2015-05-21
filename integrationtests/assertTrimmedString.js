@@ -1,6 +1,6 @@
 'use strict';
 
-/* global require */
+/* global require module */
 
 var assert = require('assert');
 
