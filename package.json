@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint js --ext .jsx",
-    "test:integration": "kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js"
+    "test:integration": "npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js"
   },
   "repository": {
     "type": "git",

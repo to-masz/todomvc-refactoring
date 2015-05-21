@@ -180,7 +180,7 @@ app.TodoItems = React.createClass({
   },
 
   render: function() {
-    var model = this.props.model;
+    var model1 = this.props.model;
     var todos = this.props.todos;
     var self = this;
 
@@ -189,8 +189,8 @@ app.TodoItems = React.createClass({
         <app.TodoItem
           key={todo.id}
           todo={todo}
-          onToggle={model.toggle.bind(model, todo)}
-          onDestroy={model.destroy.bind(model, todo)}
+          onToggle={model1.toggle.bind(model1, todo)}
+          onDestroy={model1.destroy.bind(model1, todo)}
           onEdit={self.edit.bind(self, todo)}
           editing={self.state.editing === todo.id}
           onSave={self.save.bind(self, todo)}
@@ -244,7 +244,7 @@ app.TodoApp = React.createClass({
     var props = this.props;
     var stats = props.stats;
 
-    var model = this.props.model;
+    var model1 = this.props.model;
     var newField = this.refs.newField;
 
     function doun(event) {
@@ -263,8 +263,8 @@ app.TodoApp = React.createClass({
             }
             t.id += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
           }
-          model.todos = model.todos.concat(t);
-          model.inform();
+          model1.todos = model1.todos.concat(t);
+          model1.inform();
 
           newField.getDOMNode().value = '';
         }
