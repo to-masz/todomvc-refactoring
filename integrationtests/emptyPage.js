@@ -19,6 +19,9 @@ describe('the basic site', function () {
               .then(function () {
                   return browser.executeScript('localStorage.clear();');
               })
+              .then(function () {
+                return browser.get(url);
+              })
                 .then(function(){return browser.findElement(kommando.webdriver.By.tagName('body')).getInnerHtml(); })
                 .then(function (html) {
                     // fs.writeFileSync(path.join(__dirname, 'golden-master.html'), html);

@@ -22,6 +22,9 @@ describe('filter all completed items', function () {
           return browser.executeScript('localStorage.clear();');
       })
       .then(function () {
+        return browser.get(url);
+      })
+      .then(function () {
           return browser.findElement(kommando.webdriver.By.id('new-todo')).click();
       })
       .then(function () {
@@ -64,6 +67,9 @@ describe('filter all completed items', function () {
     browser.get(url)
       .then(function () {
           return browser.executeScript('localStorage.clear();');
+      })
+      .then(function () {
+        return browser.get(url);
       })
       .then(function () {
           return browser.findElement(kommando.webdriver.By.id('new-todo')).click();
