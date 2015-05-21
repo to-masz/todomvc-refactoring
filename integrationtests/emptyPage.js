@@ -1,10 +1,7 @@
 'use strict';
-/* global kommando  require __dirname */
+/* global kommando  require */
 
-var assertTrimmedString = require('./assertTrimmedString');
-
-var path = require('path');
-var fs = require('fs');
+var controls = require('./_controls');
 
 var url = 'http://localhost/todomvc-refactoring/index.html';
 var browser = kommando.browser;
@@ -15,21 +12,9 @@ describe('the basic site', function () {
 
     describe('should render correct ', function () {
         it('when nothing was clicked', function (done) {
-            browser.get(url)
-              .then(function () {
-                  return browser.executeScript('localStorage.clear();');
-              })
-              .then(function () {
-                return browser.get(url);
-              })
-                .then(function(){return browser.findElement(kommando.webdriver.By.tagName('body')).getInnerHtml(); })
-                .then(function (html) {
-                    // fs.writeFileSync(path.join(__dirname, 'golden-master.html'), html);
-                    var expected = fs.readFileSync(path.join(__dirname, 'golden-master.html'), 'utf8');
-                    assertTrimmedString(html, expected);
-                })
-                .then(done, done);
+          var promise = controls.newPage(url);
+          controls.assertInnerHtml(promise, 'golden-master.html')
+            .then(done, done);
         });
     });
 });
-
