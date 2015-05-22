@@ -19,9 +19,18 @@ function more() {
 // may not even be worth separating this logic
 // out, but we do this to demonstrate one way to
 // separate out parts of your application.
+function LocalStorage(key) {
+  this.get = function() {
+    return (localStorage.getItem(key) && JSON.parse(localStorage.getItem(key))) || [];
+  };
+  this.set = function(todos) {
+    localStorage.setItem(key, JSON.stringify(todos));
+  };
+}
+
 function TodoModel(key) {
-  this.key = key;
-  this.todos = (localStorage.getItem(key) && JSON.parse(localStorage.getItem(key))) || [];
+  this.storage = new LocalStorage(key);
+  this.todos = this.storage.get();
   this.onChanges = [];
 }
 
@@ -30,7 +39,7 @@ TodoModel.prototype.subscribe = function(onChange) {
 };
 
 TodoModel.prototype.inform = function() {
-  localStorage.setItem(this.key, JSON.stringify(this.todos));
+  this.storage.set(this.todos);
   this.onChanges.forEach(function(cb) { cb(); });
 };
 
