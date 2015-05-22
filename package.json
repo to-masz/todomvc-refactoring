@@ -24,6 +24,7 @@
     "kommando": "^1.0.0",
     "mocha": "^2.2.5",
     "browserify": "^10.2.1",
-    "reactify": "^1.1.1"
+    "reactify": "^1.1.1",
+    "eslint-plugin-react": "^2.3.0"
   }
 }

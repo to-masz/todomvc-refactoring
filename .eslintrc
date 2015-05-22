@@ -17,5 +17,8 @@
   "env" : {
     "browser": true,
     "mocha": true
-  }
+  },
+  "plugins": [
+    "react"
+  ]
 }
