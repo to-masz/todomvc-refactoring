@@ -19,17 +19,9 @@ function more() {
 // may not even be worth separating this logic
 // out, but we do this to demonstrate one way to
 // separate out parts of your application.
-function LocalStorage(key) {
-  this.get = function() {
-    return (localStorage.getItem(key) && JSON.parse(localStorage.getItem(key))) || [];
-  };
-  this.set = function(todos) {
-    localStorage.setItem(key, JSON.stringify(todos));
-  };
-}
 
-function TodoModel(key) {
-  this.storage = new LocalStorage(key);
+function TodoModel(storage) {
+  this.storage = storage;
   this.todos = this.storage.get();
   this.onChanges = [];
 }
