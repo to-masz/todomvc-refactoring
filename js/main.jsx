@@ -1,6 +1,8 @@
 'use strict';
-/* global React Router */
+/* global React Router require */
+var Filter = require('./filter.js');
 var app = app || {};
+app.TodoModel = require('./todo-model.js');
 
 app.TodoItem = React.createClass({
   sbmt: function() {
