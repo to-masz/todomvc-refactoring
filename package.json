@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint js --ext .jsx",
-    "test:integration": "npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js"
+    "build:app": "browserify js/main.jsx --outfile=dist/index.js --transform=reactify",
+    "test:integration": "npm run build:app && npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   "devDependencies": {
     "eslint": "^0.21.0",
     "kommando": "^1.0.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "browserify": "^10.2.1",
+    "reactify": "^1.1.1"
   }
 }
