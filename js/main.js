@@ -3,6 +3,7 @@
 var Filter = require('./filter.js');
 var TodoModel = require('./todo-model.js');
 var TodoApp = require('./app.js');
+var getStats = require('./util/stats.js');
 
 var filterData = [
   {url: '/', linkText: 'All'},
@@ -14,14 +15,6 @@ var filter = new Filter(filterData);
 function updateViewFilteredBy(index) {
   filter._current = index;
   updateView();
-}
-
-function getStats(todos) {
-  var activeCount = todos.filter(function(todo) { return !todo.completed; }).length;
-  return {
-    activeCount: activeCount,
-    completedCount: todos.length - activeCount
-  };
 }
 
 var todoApp;
