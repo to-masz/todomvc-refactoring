@@ -1,3 +1,4 @@
+/* global module */
 'use strict';
 
 function Filter(filters) {

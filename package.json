@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "lint": "eslint js --ext .jsx",
-    "build:app": "browserify js/main.jsx --outfile=dist/index.js --transform=reactify",
+    "lint": "eslint js",
+    "build:app": "browserify js/main.js --outfile=dist/index.js --transform=reactify",
     "test:integration": "npm run build:app && npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js"
   },
   "repository": {
