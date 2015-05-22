@@ -47,7 +47,7 @@ module.exports = {
   assertInnerHtml: function(promise, goldenMasterFileName) {
     return promise
       .then(function() {
-        return browser.findElement(kommando.webdriver.By.css('#todoapp')).getInnerHtml();
+        return browser.findElement(kommando.webdriver.By.tagName('body')).getInnerHtml();
       })
       .then(function(html) {
         var reactAttrs = / data-react[-\w]+="[^"]+"/g;
