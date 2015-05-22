@@ -1,8 +1,7 @@
 'use strict';
 /* global React Router require */
 var Filter = require('./filter.js');
-var app = app || {};
-app.TodoModel = require('./todo-model.js');
+var TodoModel = require('./todo-model.js');
 var TodoApp = require('./app.js');
 
 var filterData = [
@@ -35,7 +34,7 @@ function updateView() {
   });
 }
 
-var model = new app.TodoModel('react-todos');
+var model = new TodoModel('react-todos');
 model.subscribe(updateView);
 todoApp = React.render(
   <TodoApp
