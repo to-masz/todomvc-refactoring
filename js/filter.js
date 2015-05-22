@@ -17,3 +17,5 @@ Filter.prototype = {
     });
   }
 };
+
+module.exports = Filter;
