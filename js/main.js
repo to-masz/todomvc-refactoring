@@ -3,64 +3,7 @@
 var Filter = require('./filter.js');
 var app = app || {};
 app.TodoModel = require('./todo-model.js');
-app.TodoItem = require('./todo-item.js');
-
-app.TodoItems = React.createClass({
-
-  getInitialState: function() {
-    return {
-      editing: null
-    };
-  },
-
-  toggleAll: function(event) {
-    var checked = event.target.checked;
-    this.props.model.toggleAll(checked);
-  },
-
-  edit: function(todo, callback) {
-    this.setState({editing: todo.id}, function() {
-      callback();
-    });
-  },
-
-  save: function(todoToSave, text) {
-    this.props.model.save(todoToSave, text);
-    this.setState({editing: null});
-  },
-
-  cancel: function() {
-    this.setState({editing: null});
-  },
-
-  render: function() {
-    var model1 = this.props.model;
-    var todos = this.props.todos;
-    var self = this;
-
-    function _renderItem(todo) {
-      return (
-        <app.TodoItem
-          key={todo.id}
-          todo={todo}
-          onToggle={model1.toggle.bind(model1, todo)}
-          onDestroy={model1.destroy.bind(model1, todo)}
-          onEdit={self.edit.bind(self, todo)}
-          editing={self.state.editing === todo.id}
-          onSave={self.save.bind(self, todo)}
-          onCancel={self.cancel}
-          />
-      );
-    }
-
-    return (
-      <section id="main">
-        <input id="toggle-all" type="checkbox" onChange={this.toggleAll} checked={this.props.checked}/>
-        <ul id="todo-list">{todos.map(_renderItem)}</ul>
-      </section>
-    );
-  }
-});
+app.TodoItems = require('./todo-items.js');
 
 var filterData = [
   {url: '/', linkText: 'All'},
