@@ -1,3 +1,6 @@
+'use strict';
+/* global require */
+
 var assert = require('assert');
 
 describe('Testsuite', function() {
