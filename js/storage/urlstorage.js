@@ -4,20 +4,22 @@
 var UrlQueryContent = require('../external-deps/url-query-content');
 
 function UrlStorage(urlQueryContent) {
-  if (!urlQueryContent) {
-    urlQueryContent = UrlQueryContent.fromParameter('todos');
-  }
-  this.getTodos = function() {
-    try {
-      return JSON.parse(urlQueryContent.get());
-    } catch (e) {
-      var noData = [];
-      return noData;
-    }
-  };
-  this.setTodos = function(todos) {
-    urlQueryContent.set(JSON.stringify(todos));
-  };
+  this.urlQueryContent = urlQueryContent || UrlQueryContent.fromParameter('todos');
 }
+UrlStorage.prototype = {
+  getTodos: function() {
+    try {
+      return JSON.parse(this.urlQueryContent.get());
+    } catch (e) {
+      var noTodos = [];
+      return noTodos;
+    }
+  },
+
+  setTodos: function(todos) {
+    this.urlQueryContent.set(JSON.stringify(todos));
+  }
+
+};
 
 module.exports = UrlStorage;
