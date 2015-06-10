@@ -34,6 +34,19 @@ describe('URL storage', function() {
     });
   });
 
+  describe('`setTodos()`', function() {
+    it('updates the url query parameter', function() {
+      var value = null;
+      var urlQueryContent = {set: function(s) { value = s; }};
+
+      var todos = [{one: 'todo'}];
+      var storage = new UrlStorage(urlQueryContent);
+      storage.setTodos(todos);
+
+      assert.equal(value, JSON.stringify(todos));
+    });
+  });
+
 });
 
 function UrlStorage(urlQueryContent) {
@@ -45,5 +58,7 @@ function UrlStorage(urlQueryContent) {
       return noData;
     }
   };
-  this.setTodos = function() {};
+  this.setTodos = function(todos) {
+    urlQueryContent.set(JSON.stringify(todos));
+  };
 }
