@@ -2,10 +2,10 @@
 /* global localStorage module */
 
 function LocalStorage(key) {
-  this.get = function() {
+  this.getTodos = function() {
     return (localStorage.getItem(key) && JSON.parse(localStorage.getItem(key))) || [];
   };
-  this.set = function(todos) {
+  this.setTodos = function(todos) {
     localStorage.setItem(key, JSON.stringify(todos));
   };
 }

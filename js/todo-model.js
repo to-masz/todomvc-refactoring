@@ -22,7 +22,7 @@ function more() {
 
 function TodoModel(storage) {
   this.storage = storage;
-  this.todos = this.storage.get();
+  this.todos = this.storage.getTodos();
   this.onChanges = [];
 }
 
@@ -31,7 +31,7 @@ TodoModel.prototype.subscribe = function(onChange) {
 };
 
 TodoModel.prototype.inform = function() {
-  this.storage.set(this.todos);
+  this.storage.setTodos(this.todos);
   this.onChanges.forEach(function(cb) { cb(); });
 };
 

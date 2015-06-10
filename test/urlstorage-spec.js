@@ -11,26 +11,26 @@ describe('URL storage', function() {
     storageInterfaceChecks(storage, 'UrlStorage');
   });
 
-  describe('`get()`', function() {
+  describe('`getTodos()`', function() {
     it('properly decodes the data from the URL query param', function() {
       var todos = [{id: 1, title: 'title'}];
       var urlQueryContent = {get: function() { return JSON.stringify(todos); }};
       var storage = new UrlStorage(urlQueryContent);
 
-      assert.deepEqual(storage.get(), todos);
+      assert.deepEqual(storage.getTodos(), todos);
     });
     describe('with invalid input', function() {
       it('doesn`t bail out on non-JSON content', function() {
         var urlQueryContent = {get: function() { return 'invalid JSON data'; }};
         var storage = new UrlStorage(urlQueryContent);
 
-        assert.doesNotThrow(function() { storage.get(); });
+        assert.doesNotThrow(function() { storage.getTodos(); });
       });
       it('returns an empty todo list', function() {
         var urlQueryContent = {get: function() { return 'invalid JSON data'; }};
         var storage = new UrlStorage(urlQueryContent);
 
-        assert.deepEqual(storage.get(), []);
+        assert.deepEqual(storage.getTodos(), []);
       });
     });
   });
@@ -38,7 +38,7 @@ describe('URL storage', function() {
 });
 
 function UrlStorage(urlQueryContent) {
-  this.get = function() {
+  this.getTodos = function() {
     try {
       return JSON.parse(urlQueryContent.get());
     } catch (e) {
@@ -46,5 +46,5 @@ function UrlStorage(urlQueryContent) {
       return noData;
     }
   };
-  this.set = function() {};
+  this.setTodos = function() {};
 }

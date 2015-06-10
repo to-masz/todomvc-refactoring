@@ -11,7 +11,7 @@ function doesImplement(obj, methodNames, objectName) {
 }
 
 function storageInterfaceChecks(obj, objectName) {
-  doesImplement(obj, ['get', 'set'], objectName);
+  doesImplement(obj, ['getTodos', 'setTodos'], objectName);
 }
 
 module.exports = storageInterfaceChecks;

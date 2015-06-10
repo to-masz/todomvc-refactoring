@@ -12,7 +12,7 @@ describe('LocalStorage', function() {
   });
 
   it('verify interface', function() {
-    storageInterfaceChecks(storage, 'UrlStorage');
+    storageInterfaceChecks(storage, 'LocalStorage');
   });
 
 });
