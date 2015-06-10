@@ -21,8 +21,8 @@ var TodoItems = React.createClass({
     });
   },
 
-  save: function(todoToSave, text) {
-    this.props.model.save(todoToSave, text);
+  updateTodo: function(todoToUpdate, newText) {
+    this.props.model.update(todoToUpdate, newText);
     this.setState({editing: null});
   },
 
@@ -44,7 +44,7 @@ var TodoItems = React.createClass({
           onDestroy={model1.destroy.bind(model1, todo)}
           onEdit={self.edit.bind(self, todo)}
           editing={self.state.editing === todo.id}
-          onSave={self.save.bind(self, todo)}
+          onUpdateTodo={self.updateTodo.bind(self, todo)}
           onCancel={self.cancel}
           />
       );

@@ -65,9 +65,9 @@ TodoModel.prototype.destroy = function(todo) {
   this.inform();
 };
 
-TodoModel.prototype.save = function(todoToSave, text) {
+TodoModel.prototype.updateTodo = function(todoToUpdate, newText) {
   this.todos = this.todos.map(function(todo) {
-    return todo !== todoToSave ? todo : more({}, todo, {title: text});
+    return todo !== todoToUpdate ? todo : more({}, todo, {title: newText});
   });
 
   this.inform();

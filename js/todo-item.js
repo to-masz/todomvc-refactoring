@@ -5,7 +5,7 @@ var TodoItem = React.createClass({
   sbmt: function() {
     var val = this.state.editText.trim();
     if (val) {
-      this.props.onSave(val);
+      this.props.onUpdateTodo(val);
       this.setState({editText: val});
     } else {
       this.props.onDestroy();
