@@ -4,7 +4,7 @@
   "description": "Refactorig Workshop IPC 2015",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "npm run lint && mocha",
     "lint": "eslint js test",
     "build:app": "browserify js/main.js --outfile=dist/index.js --transform=reactify",
     "test:integration": "npm run build:app && npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js",
