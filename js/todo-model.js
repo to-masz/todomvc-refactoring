@@ -81,4 +81,9 @@ TodoModel.prototype.clearCompleted = function() {
   this.inform();
 };
 
+TodoModel.prototype.addTodo = function(todo) {
+  this.todos = this.todos.concat(todo);
+  this.inform();
+};
+
 module.exports = TodoModel;

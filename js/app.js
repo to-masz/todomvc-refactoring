@@ -27,8 +27,7 @@ var TodoApp = React.createClass({
             }
             t.id += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
           }
-          model1.todos = model1.todos.concat(t);
-          model1.inform();
+          model1.addTodo(t);
 
           newField.getDOMNode().value = '';
         }
