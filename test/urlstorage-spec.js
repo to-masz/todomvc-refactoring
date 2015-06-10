@@ -20,16 +20,15 @@ describe('URL storage', function() {
       assert.deepEqual(storage.getTodos(), todos);
     });
     describe('with invalid input', function() {
-      it('doesn`t bail out on non-JSON content', function() {
+      var storage;
+      beforeEach(function() {
         var urlQueryContent = {get: function() { return 'invalid JSON data'; }};
-        var storage = new UrlStorage(urlQueryContent);
-
+        storage = new UrlStorage(urlQueryContent);
+      });
+      it('doesn`t bail out on non-JSON content', function() {
         assert.doesNotThrow(function() { storage.getTodos(); });
       });
       it('returns an empty todo list', function() {
-        var urlQueryContent = {get: function() { return 'invalid JSON data'; }};
-        var storage = new UrlStorage(urlQueryContent);
-
         assert.deepEqual(storage.getTodos(), []);
       });
     });
