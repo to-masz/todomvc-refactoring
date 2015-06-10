@@ -22,7 +22,7 @@ var TodoItems = React.createClass({
   },
 
   updateTodo: function(todoToUpdate, newText) {
-    this.props.model.update(todoToUpdate, newText);
+    this.props.model.updateTodo(todoToUpdate, newText);
     this.setState({editing: null});
   },
 
