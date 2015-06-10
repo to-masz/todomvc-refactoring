@@ -3,6 +3,7 @@
 
 var assert = require('assert');
 var storageInterfaceChecks = require('./_storage-interface-checks');
+var UrlStorage = require('../js/storage/urlstorage');
 
 describe('URL storage', function() {
 
@@ -48,17 +49,3 @@ describe('URL storage', function() {
   });
 
 });
-
-function UrlStorage(urlQueryContent) {
-  this.getTodos = function() {
-    try {
-      return JSON.parse(urlQueryContent.get());
-    } catch (e) {
-      var noData = [];
-      return noData;
-    }
-  };
-  this.setTodos = function(todos) {
-    urlQueryContent.set(JSON.stringify(todos));
-  };
-}
