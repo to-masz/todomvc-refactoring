@@ -7,7 +7,8 @@
     "test": "mocha",
     "lint": "eslint js test",
     "build:app": "browserify js/main.js --outfile=dist/index.js --transform=reactify",
-    "test:integration": "npm run build:app && npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js"
+    "test:integration": "npm run build:app && npm run lint && kommando --browser chrome integrationtests/emptyPage.js integrationtests/addOneItem.js integrationtests/filterCompletedItems.js",
+    "start": "watch 'npm run build:app' js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "mocha": "^2.2.5",
     "browserify": "^10.2.1",
     "reactify": "^1.1.1",
-    "eslint-plugin-react": "^2.3.0"
+    "eslint-plugin-react": "^2.3.0",
+    "watch": "^0.16.0"
   }
 }
