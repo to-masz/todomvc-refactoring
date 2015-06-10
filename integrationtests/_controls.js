@@ -61,8 +61,18 @@ module.exports = {
     return promise.then(function() {
       return browser.getCurrentUrl();
     })
-      .then(function(currentUrl) {
-        assert.equal(currentUrl, expectedUrl);
-      });
+    .then(function(currentUrl) {
+      assert.equal(currentUrl, expectedUrl);
+    });
+  },
+
+  assertUrlToEndWith: function(promise, urlEnd) {
+    return promise.then(function() {
+      return browser.getCurrentUrl();
+    })
+    .then(function(currentUrl) {
+      var urlEndLength = urlEnd.length;
+      assert.equal(currentUrl.substr(currentUrl.length - urlEndLength), urlEnd);
+    });
   }
 };

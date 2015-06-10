@@ -27,7 +27,7 @@ describe('filter all completed items', function () {
     promise = controls.addTodo(promise, 'hallo 1');
     promise = controls.setFirstItemToCompleted(promise);
     promise = controls.filterByCompleted(promise);
-    controls.assertUrl(promise, url + '#/completed')
+    controls.assertUrlToEndWith(promise, '#/completed')
       .then(done, done);
   });
 
