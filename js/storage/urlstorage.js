@@ -1,11 +1,11 @@
 'use strict';
-/* global JSON module */
+/* global JSON module require */
 
 var UrlQueryContent = require('../external-deps/url-query-content');
 
 function UrlStorage(urlQueryContent) {
   if (!urlQueryContent) {
-    urlQueryContent = new UrlQueryContent.fromParameter('todos');
+    urlQueryContent = UrlQueryContent.fromParameter('todos');
   }
   this.getTodos = function() {
     try {
