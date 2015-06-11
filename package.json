@@ -1,0 +1,22 @@
+{
+  "name": "todomvc-refactoring",
+  "version": "1.0.0",
+  "description": "A clone of the react todo MVC app in order to refactor it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/to-masz/todomvc-refactoring.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/to-masz/todomvc-refactoring/issues"
+  },
+  "homepage": "https://github.com/to-masz/todomvc-refactoring#readme",
+  "devDependencies": {
+    "eslint": "^0.22.1"
+  }
+}
